@@ -10,7 +10,7 @@ lastletter = "null"
 attackdmg = random.randint(1,weapondmg)
 shielddmg = random.randint(1,4)
 ma = True
-
+monsterhp = 100
 def gamesetup():
     global playername
     print("Hello! Welcome to QuillStrike")
@@ -24,27 +24,37 @@ def monsterattack():
     global monsterdmg
     global attackdmg
     global shielddmg
-    if ma <= 0:
+    global monsterhp
+    if playerhealth <= 0:
         print("You are dead. The land of Quillstike is destroed")
         ma = False
     else:
         print("It is time for the mostor to attack")
-        monsterdmgadd = random.randint(1,10)
+        monsterdmgadd = random.randint(1,100)
         monsterdmg = 5
         if lastletter == "a" or lastletter == "A":
             monsterdmg = monsterdmg * 1.5
-        if monsterdmgadd == 3:
+            print("It does", monsterdmg)
+            playerhealth = playerhealth - monsterdmg
+        if monsterdmgadd <= 10:
             monsterdmg = monsterdmg * 1.5
+            print("It does", monsterdmg)
         playerhealth = playerhealth - monsterdmg
-        print("It does", monsterdmg)
+        if monsterdmgadd <= 80:
+            monsterdmg = 0
+            print("He missed!")
+        if monsterattack == 2:
+            monsterhp = monsterhp + 10
+            print("The monster has a health posion and uses it. He has",  monsterhp)
 
-def monsterBattle(monsterName, dmg, monsterhp):
+def monsterBattle(monsterName, dmg):
     global weapondmg
     global playerhealth
     global allouttime
     global healthposion
     global lastletter
     global ma
+    global monsterhp
     attackdmgr = 0
     monsterdmg = random.randint(1,dmg)
     while ma == True:
@@ -70,10 +80,10 @@ def monsterBattle(monsterName, dmg, monsterhp):
                 miss = random.randint(1,10)
                 monsterdmg = monsterdmg * 2
                 allouttime = 15
-                if miss <= 5:
+                if miss == 5:
                     print("You race after ",monsterName," and slice, cut, and go all fury at you but you missed!")
                 else:
-                    attackdmgr = (attackdmg * 1.2)
+                    attackdmgr = (attackdmg * 3)
                     monsterhp = monsterhp - attackdmgr
                     print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
 
@@ -81,7 +91,7 @@ def monsterBattle(monsterName, dmg, monsterhp):
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "R" or battle_do =="r":
             miss = random.randint(1,1000)
-            if miss <= 200:
+            if miss <= 100:
                 print("You do a regualr attack")
                 print("But You miss")
             else:
@@ -92,7 +102,7 @@ def monsterBattle(monsterName, dmg, monsterhp):
         elif battle_do == "U" or battle_do == "u":
             if healthposion == 0:
                 print("you drink the health poision and gain 10 healrth")
-                playerhealth  = playerhealth + 10
+                playerhealth  = playerhealth + 20
                 healthposion = 11
             else:
                 print("sorry, wait ", healthposion, "more rounds to have the health posion")
@@ -101,11 +111,12 @@ def monsterBattle(monsterName, dmg, monsterhp):
             ma = False
 
 #        elif battle_do == ""
-        if allouttime > 0:
-            allouttime = allouttime - 1
-        if healthposion > 0:
-            healthposion - 1
-        time.sleep(1)
-        monsterattack()
+        if ma == True:
+            if allouttime > 0:
+                allouttime = allouttime - 1
+            if healthposion > 0:
+                healthposion = healthposion - 1
+            time.sleep(1)
+            monsterattack()
 gamesetup()
-monsterBattle("goblin", 10, 100)
+monsterBattle("goblin", 10)
