@@ -4,6 +4,7 @@ import os
 playerhealth = 100
 weapondmg = 5
 allouttime = 15
+
 healthposion = 10
 def monsterBattle(monsterName, dmg, monsterhp):
     global weapondmg
