@@ -4,10 +4,10 @@ import os
 playerhealth = 100
 weapondmg = 5
 allouttime = 15
-
 healthposion = 10
 def monsterBattle(monsterName, dmg, monsterhp):
     global weapondmg
+    global playerhealth
     global allouttime
     global healthposion
     ma = True
@@ -47,15 +47,16 @@ def monsterBattle(monsterName, dmg, monsterhp):
                 print("You use your sowrd to slice him, and do ", weapondmg)
         elif battle_do == "U" or battle_do == "u":
             if healthposion == 0:
-                print("you drink the health poision and gain 5 health")
+                print("you drink the health poision and gain 10 health")
+                playerhealth  = playerhealth + 10
                 healthposion = 11
             else:
                 print("sorry, wait ", healthposion, "more rounds to have the health posion")
+        
         
         if allouttime <= 0:
             allouttime = allouttime - 1
         if healthposion <= 0:
             healthposion - 1
         time.sleep(1)
-#hello!
 monsterBattle("goblin", 3, 50)
