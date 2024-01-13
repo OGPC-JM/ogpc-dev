@@ -5,14 +5,13 @@ playerhealth = 100
 weapondmg = 5
 allouttime = 15
 healthposion = 10
+playername = "Null"
 def gamesetup():
-    print("Welcome to Jumanji!\n")
-    print("      _ _    _ __  __          _   _      _ _____")
-    print("     | | |  | |  \/  |   /\   | \ | |    | |_   _|")
-    print("     | | |  | | \  / |  /  \  |  \| |    | | | | ")
-    print("     | | |  | | |\/| | / /\ \ | . ` |_   | | | | ")
-    print("| |__| | |__| | |  | |/ ____ \| |\  | |__| |_| |")
-    print(" \____/ \____/|_|  |_/_/    \_\_| \_|\____/|_____|")
+    global playername
+    print("Hello! Welcome to QuillStrike")
+    print("You are in Quilland. A taribale monstor has attacked your vialge\nThe elder said that the mostonr is looking for the power gem\nand that he will do everything to find it. You are destend to destroy the mosntor\n")
+    print("Type your name in:")
+    playername = input("")
 def monsterBattle(monsterName, dmg, monsterhp):
     global weapondmg
     global playerhealth
@@ -26,6 +25,7 @@ def monsterBattle(monsterName, dmg, monsterhp):
         attackdmg = random.randint(1,weapondmg)
         monsterdmg = random.randint(1,dmg)
         shielddmg = random.randint(1,4)
+        print("Hello", playername)
         print("You are in battle with",monsterName,". The monster has", monsterhp," health. Will you...")
         print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
         print("[A]ll out attack(will do massive damage but leaves you exhausted. Being exhasted means if attacker attacks, they do 1.5 times more damage.)")
@@ -42,10 +42,12 @@ def monsterBattle(monsterName, dmg, monsterhp):
                 monsterdmg = monsterdmg * 2
                 if miss <= 5:
                     print("You race after ",monsterName," and slice, cut, and go all fury at you but you missed!")
+                else:
+                    attackdmgr = (attackdmg * 1.2)
+                    monsterhp = monsterhp - attackdmgr
+                    print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
             else:
-                attackdmgr = (attackdmg * 1.2)
-                monsterhp = monsterhp - attackdmgr
-                print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
+                print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "R" or battle_do =="r":
             miss = random.randint(1,1000)
             if miss <= 200:
@@ -64,7 +66,7 @@ def monsterBattle(monsterName, dmg, monsterhp):
             else:
                 print("sorry, wait ", healthposion, "more rounds to have the health posion")
         elif battle_do == "E" or battle_do == "e":
-            print("Ok, thanks for playing")
+            print("Ok, thanks for playing, the land of quillstrike is destroyed!")
             ma = False
 
 #        elif battle_do == ""
@@ -74,4 +76,4 @@ def monsterBattle(monsterName, dmg, monsterhp):
             healthposion - 1
         time.sleep(1)
 gamesetup()
-#monsterBattle("goblin", 3, 50)
+monsterBattle("goblin", 3, 50)
