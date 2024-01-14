@@ -25,27 +25,31 @@ def monsterattack():
     global attackdmg
     global shielddmg
     global monsterhp
-    if playerhealth <= 0:
-        print("You are dead. The land of Quillstike is destroed")
-        ma = False
-    else:
-        print("It is time for the mostor to attack")
-        monsterdmgadd = random.randint(1,100)
-        monsterdmg = 5
-        if lastletter == "a" or lastletter == "A":
-            monsterdmg = monsterdmg * 1.5
-            print("It does", monsterdmg)
-            playerhealth = playerhealth - monsterdmg
-        if monsterdmgadd <= 10:
-            monsterdmg = monsterdmg * 1.5
-            print("It does", monsterdmg)
-        playerhealth = playerhealth - monsterdmg
-        if monsterdmgadd <= 80:
-            monsterdmg = 0
-            print("He missed!")
-        if monsterattack == 2:
-            monsterhp = monsterhp + 10
-            print("The monster has a health posion and uses it. He has",  monsterhp)
+    if ma == True:
+        if playerhealth <= 0:
+            print("You are dead. The land of Quillstike is destroed")
+            ma = False
+        else:
+            print("It is time for the mostor to attack")
+            monsterdmgrand = random.randint(1,100)
+            monsterdmg = 5
+            if lastletter == "a" or lastletter == "A":
+                monsterdmg = 10
+                print("It does", monsterdmg)
+                playerhealth = playerhealth - monsterdmg
+            elif monsterdmgrand <= 10:
+                monsterdmg = 7.5
+                print("It does", monsterdmg)
+                playerhealth = playerhealth - monsterdmg
+            elif monsterdmgrand <= 50 and monsterdmgrand >= 55:
+                monsterhp = monsterhp + 10
+                print("The monster has a health posion and uses it. He has",  monsterhp)
+            elif monsterdmgrand >= 90 and monsterdmgrand <=100 :
+                monsterdmg = 0
+                print("He missed!")
+            else:
+                monsterdmg = 5
+                print("It does", monsterdmg)
 
 def monsterBattle(monsterName, dmg):
     global weapondmg
@@ -59,7 +63,6 @@ def monsterBattle(monsterName, dmg):
     monsterdmg = random.randint(1,dmg)
     while ma == True:
         if monsterhp <= 0:
-            print("Good Job, you have won the mostor! You have won 1 bitcoin my bitcoin wallet: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
             ma = False
         attackdmg = random.randint(1,weapondmg)
         shielddmg = random.randint(1,4)
@@ -118,5 +121,10 @@ def monsterBattle(monsterName, dmg):
                 healthposion = healthposion - 1
             time.sleep(1)
             monsterattack()
+if ma == False:
+    if playerhealth <= 0:
+        print("You are dead, and Quilland is deatroyed, thanks to you.")
+    else:
+        print("Congratulations! You win, and here is one bitcoin. Get one from here: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
 gamesetup()
 monsterBattle("goblin", 10)
