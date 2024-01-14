@@ -5,7 +5,7 @@ playerhealth = 100
 weapondmg = 5
 allouttime = 0
 healthposion = 10
-playername = "Null"
+playername = "null"
 lastletter = "null"
 attackdmg = random.randint(1,weapondmg)
 shielddmg = random.randint(1,4)
@@ -33,12 +33,16 @@ def monsterattack():
             print("It is time for the mostor to attack")
             monsterdmgrand = random.randint(1,100)
             monsterdmg = 5
+            if lastletter == "D" or lastletter == "d":
+                monsterdmg = monsterdmg - shielddmg
+            if lastletter == "b" or lastletter == "B":
+                monsterdmg = monsterdmg - 4
             if lastletter == "a" or lastletter == "A":
-                monsterdmg = 10
+                monsterdmg = monsterdmg * 2
                 print("It does", monsterdmg)
                 playerhealth = playerhealth - monsterdmg
             elif monsterdmgrand <= 10:
-                monsterdmg = 7.5
+                monsterdmg = monsterdmg * 1.5
                 print("It does", monsterdmg)
                 playerhealth = playerhealth - monsterdmg
             elif monsterdmgrand <= 50 and monsterdmgrand >= 55:
@@ -48,7 +52,6 @@ def monsterattack():
                 monsterdmg = 0
                 print("He missed!")
             else:
-                monsterdmg = 5
                 playerhealth = playerhealth - monsterdmg
                 print("It does", monsterdmg)
 
@@ -61,6 +64,7 @@ def monsterBattle(monsterName, dmg):
     global lastletter
     global ma
     global monsterhp
+    global shielddmg
     attackdmgr = 0
     monsterdmg = random.randint(1,dmg)
     while ma == True:
@@ -95,6 +99,13 @@ def monsterBattle(monsterName, dmg):
                     print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
             else:
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
+        elif battle_do == "B" or battle_do == "b":
+            print("Ok, you rase your sheild to block 4 damage")
+        elif battle_do == "D" or battle_do == "d":
+            miss = random.randint(1,10)
+            if miss <= 4:
+                attackdmgr = attackdmg * 0.5
+            print("Ok, you do", attackdmg, "at the", monsterName, "and you block", shielddmg)
         elif battle_do == "R" or battle_do =="r":
             miss = random.randint(1,1000)
             if miss <= 100:
@@ -107,13 +118,12 @@ def monsterBattle(monsterName, dmg):
                 monsterhp = monsterhp - attackdmgr
         elif battle_do == "U" or battle_do == "u":
             if healthposion == 0:
-                print("you drink the health poision and gain 10 healrth")
                 playerhealth  = playerhealth + 20
+                print("you drink the health poision and gain 20 health")
                 healthposion = 11
             else:
                 print("sorry, wait ", healthposion, "more rounds to have the health posion")
         elif battle_do == "E" or battle_do == "e":
-            print("Ok, thanks for playing, the land of quillstrike is destroyed!")
             quit = True
             ma = False
 
@@ -125,12 +135,15 @@ def monsterBattle(monsterName, dmg):
                 healthposion = healthposion - 1
             time.sleep(1)
             monsterattack()
-        if ma == False:
-            if quit == True:
-                print("Ok, thanks for playing")
-            if playerhealth <= 0:
-                print("You are dead, and Quilland is deatroyed, thanks to you.")
-            if monsterhp <= 0 and playerhealth >= 0:
-                print("Congratulations! You win, and here is one bitcoin. Get one from here: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
+
+        if quit == True:
+            print("Ok, thanks for playing")
+            ma = False
+        if playerhealth <= 0:
+            print("You are dead, and Quilland is deatroyed, thanks to you.")
+            ma = False
+        elif monsterhp <= 0 and playerhealth >= 0:
+            print("Congratulations! You win, and here is one bitcoin. Get one from here: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
+            ma = False
 gamesetup()
 monsterBattle("goblin", 10)
