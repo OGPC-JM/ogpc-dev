@@ -49,6 +49,7 @@ def monsterattack():
                 print("He missed!")
             else:
                 monsterdmg = 5
+                playerhealth = playerhealth - monsterdmg
                 print("It does", monsterdmg)
 
 def monsterBattle(monsterName, dmg):
@@ -68,6 +69,8 @@ def monsterBattle(monsterName, dmg):
         shielddmg = random.randint(1,4)
         print("Hello", playername)
         print("Your helth is ", playerhealth)
+        print(allouttime, "more rounds before cou can use all out attack")
+        print(healthposion, "more rounds until you can use the health posion")
         print("You are in battle with",monsterName,". The monster has", monsterhp," health. Will you...")
         print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
         print("[A]ll out attack(will do massive damage but leaves you exhausted. Being exhasted means if attacker attacks, they do 1.5 times more damage.)")
