@@ -92,7 +92,7 @@ def monsterBattle(monsterName, dmg):
                     attackdmgr = (attackdmg * 3)
                     monsterhp = monsterhp - attackdmgr
                     print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
-
+#testing
             else:
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "R" or battle_do =="r":
