@@ -53,6 +53,7 @@ def monsterattack():
                 print("It does", monsterdmg)
 
 def monsterBattle(monsterName, dmg):
+    quit = False
     global weapondmg
     global playerhealth
     global allouttime
@@ -92,7 +93,6 @@ def monsterBattle(monsterName, dmg):
                     attackdmgr = (attackdmg * 3)
                     monsterhp = monsterhp - attackdmgr
                     print("You cut, slice, and turn into a tornado of death. You do ",attackdmgr, " at the monster." )
-#testing
             else:
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "R" or battle_do =="r":
@@ -114,6 +114,7 @@ def monsterBattle(monsterName, dmg):
                 print("sorry, wait ", healthposion, "more rounds to have the health posion")
         elif battle_do == "E" or battle_do == "e":
             print("Ok, thanks for playing, the land of quillstrike is destroyed!")
+            quit = True
             ma = False
 
 #        elif battle_do == ""
@@ -124,10 +125,12 @@ def monsterBattle(monsterName, dmg):
                 healthposion = healthposion - 1
             time.sleep(1)
             monsterattack()
-if ma == False:
-    if playerhealth <= 0:
-        print("You are dead, and Quilland is deatroyed, thanks to you.")
-    else:
-        print("Congratulations! You win, and here is one bitcoin. Get one from here: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
+        if ma == False:
+            if quit == True:
+                print("Ok, thanks for playing")
+            if playerhealth <= 0:
+                print("You are dead, and Quilland is deatroyed, thanks to you.")
+            if monsterhp <= 0 and playerhealth >= 0:
+                print("Congratulations! You win, and here is one bitcoin. Get one from here: Q2k7jL4uY9eT8ZfV6n3m5H1aW0c")
 gamesetup()
 monsterBattle("goblin", 10)
