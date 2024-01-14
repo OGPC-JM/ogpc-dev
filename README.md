@@ -3,8 +3,8 @@
 This is a game fir OJPC 2023
 <br>
 Thanks to (in order of inportance):<br>
-Aaron Ho
+Aaron Ho (Made the base game)
 <br>
-Mateo Arbildo
+Mateo Arbildo (Main coder)
 <br>
-Jagen Haddad
+Jagen Haddad (Achevemnts for ogpc)
