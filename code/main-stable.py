@@ -1,12 +1,11 @@
 import time
 import random
-import pygame
 playerhealth = 100
 weapondmg = 5
 allouttime = 0
 healthposion = 10
-playername = "null"
-lastletter = "null"
+playername = None
+lastletter = None
 attackdmg = random.randint(1,weapondmg)
 shielddmg = random.randint(1,4)
 ma = True
@@ -33,10 +32,10 @@ def monsterattack():
             print("It is time for the mostor to attack")
             monsterdmgrand = random.randint(1,100)
             monsterdmg = 5
-            if lastletter == "D" or lastletter == "d":
-                monsterdmg = monsterdmg - shielddmg
-            if lastletter == "b" or lastletter == "B":
-                monsterdmg = monsterdmg - 4
+#            if lastletter == "D" or lastletter == "d":
+ #               monsterdmg = monsterdmg - shielddmg
+  #          if lastletter == "b" or lastletter == "B":
+  #              monsterdmg = monsterdmg - 4
             if lastletter == "a" or lastletter == "A":
                 monsterdmg = monsterdmg * 2
                 print("It does", monsterdmg)
@@ -77,10 +76,10 @@ def monsterBattle(monsterName, dmg):
         print(allouttime, "more rounds before cou can use all out attack")
         print(healthposion, "more rounds until you can use the health posion")
         print("You are in battle with",monsterName,". The monster has", monsterhp," health. Will you...")
-        print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
+#        print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
         print("[A]ll out attack(will do massive damage but leaves you exhausted. Being exhasted means if attacker attacks, they do 1.5 times more damage.)")
         print("[R]egular attack")
-        print("[D]efence and counter(will do significantly less damage but enemy damage is also reduced.)")
+#        print("[D]efence and counter(will do significantly less damage but enemy damage is also reduced.)")
         print("[U]se health potion")
         print("[E]xit the game")
         battle_do = input()
@@ -127,7 +126,6 @@ def monsterBattle(monsterName, dmg):
             quit = True
             ma = False
 
-#        elif battle_do == ""
         if ma == True:
             if allouttime > 0:
                 allouttime = allouttime - 1
