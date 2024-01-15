@@ -1,6 +1,6 @@
 import time
 import random
-import os
+import pygame
 playerhealth = 100
 weapondmg = 5
 allouttime = 0
