@@ -32,10 +32,10 @@ def monsterattack():
             print("It is time for the mostor to attack")
             monsterdmgrand = random.randint(1,100)
             monsterdmg = 5
-#            if lastletter == "D" or lastletter == "d":
- #               monsterdmg = monsterdmg - shielddmg
-  #          if lastletter == "b" or lastletter == "B":
-  #              monsterdmg = monsterdmg - 4
+            if lastletter == "D" or lastletter == "d":
+                monsterdmg = monsterdmg - shielddmg
+            if lastletter == "b" or lastletter == "B":
+                monsterdmg = monsterdmg - 4
             if lastletter == "a" or lastletter == "A":
                 monsterdmg = monsterdmg * 2
                 print("It does", monsterdmg)
@@ -76,10 +76,10 @@ def monsterBattle(monsterName, dmg):
         print(allouttime, "more rounds before cou can use all out attack")
         print(healthposion, "more rounds until you can use the health posion")
         print("You are in battle with",monsterName,". The monster has", monsterhp," health. Will you...")
-#        print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
+        print("[B]lock with shield(if attacker attacks, may lessen an amount of damage from the attacker)")
         print("[A]ll out attack(will do massive damage but leaves you exhausted. Being exhasted means if attacker attacks, they do 1.5 times more damage.)")
         print("[R]egular attack")
-#        print("[D]efence and counter(will do significantly less damage but enemy damage is also reduced.)")
+        print("[D]efence and counter(will do significantly less damage but enemy damage is also reduced.)")
         print("[U]se health potion")
         print("[E]xit the game")
         battle_do = input()
@@ -90,6 +90,7 @@ def monsterBattle(monsterName, dmg):
                 miss = random.randint(1,10)
                 monsterdmg = monsterdmg * 2
                 allouttime = 15
+                lastletter = battle_do
                 if miss == 5:
                     print("You race after ",monsterName," and slice, cut, and go all fury at you but you missed!")
                 else:
@@ -100,11 +101,16 @@ def monsterBattle(monsterName, dmg):
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "B" or battle_do == "b":
             print("Ok, you rase your sheild to block 4 damage")
+            lastletter = battle_do
         elif battle_do == "D" or battle_do == "d":
             miss = random.randint(1,10)
-            if miss <= 4:
+            if miss <= 9:
                 attackdmgr = attackdmg * 0.5
-            print("Ok, you do", attackdmg, "at the", monsterName, "and you block", shielddmg)
+                print("Ok, you do", attackdmg, "at the", monsterName, "and you block", shielddmg, "damge")
+                monsterhp = monsterhp - attackdmg
+                lastletter = battle_do
+            else:
+                print("You missed!")
         elif battle_do == "R" or battle_do =="r":
             miss = random.randint(1,1000)
             if miss <= 100:
@@ -126,6 +132,7 @@ def monsterBattle(monsterName, dmg):
             quit = True
             ma = False
 
+#        elif battle_do == ""
         if ma == True:
             if allouttime > 0:
                 allouttime = allouttime - 1

@@ -4,8 +4,8 @@ playerhealth = 100
 weapondmg = 5
 allouttime = 0
 healthposion = 10
-playername = "null"
-lastletter = "null"
+playername = None
+lastletter = None
 attackdmg = random.randint(1,weapondmg)
 shielddmg = random.randint(1,4)
 ma = True
@@ -90,6 +90,7 @@ def monsterBattle(monsterName, dmg):
                 miss = random.randint(1,10)
                 monsterdmg = monsterdmg * 2
                 allouttime = 15
+                lastletter = battle_do
                 if miss == 5:
                     print("You race after ",monsterName," and slice, cut, and go all fury at you but you missed!")
                 else:
@@ -100,11 +101,16 @@ def monsterBattle(monsterName, dmg):
                 print("Sorry, you canot do more allout attacks until", allouttime ,"rounds")
         elif battle_do == "B" or battle_do == "b":
             print("Ok, you rase your sheild to block 4 damage")
+            lastletter = battle_do
         elif battle_do == "D" or battle_do == "d":
             miss = random.randint(1,10)
-            if miss <= 4:
+            if miss <= 9:
                 attackdmgr = attackdmg * 0.5
-            print("Ok, you do", attackdmg, "at the", monsterName, "and you block", shielddmg)
+                print("Ok, you do", attackdmg, "at the", monsterName, "and you block", shielddmg, "damge")
+                monsterhp = monsterhp - attackdmg
+                lastletter = battle_do
+            else:
+                print("You missed!")
         elif battle_do == "R" or battle_do =="r":
             miss = random.randint(1,1000)
             if miss <= 100:
