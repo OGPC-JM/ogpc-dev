@@ -1,3 +1,4 @@
+#stable file. All things shuold work now
 import time
 import random
 playerhealth = 100
