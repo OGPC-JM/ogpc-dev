@@ -1,4 +1,4 @@
-#stable file. All things shuold work now
+#stable file. All things shuold work now.some glitches expected
 import time
 import random
 playerhealth = 100
