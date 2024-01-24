@@ -1,6 +1,7 @@
 #dev file. it might not work!
 import time
 import random
+import os
 playerhealth = 100
 weapondmg = 5
 allouttime = 0
@@ -30,6 +31,7 @@ def monsterattack():
             print("You are dead. The land of Quillstike is destroed")
             ma = False
         else:
+            os.system('clear')
             print("It is time for the mostor to attack")
             monsterdmgrand = random.randint(1,100)
             monsterdmg = 5
