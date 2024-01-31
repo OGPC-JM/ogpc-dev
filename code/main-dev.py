@@ -16,8 +16,8 @@ def gamesetup():
     global playername
     print("Hello! Welcome to QuillStrike")
     print("You are in Quilland. A taribale monstor has attacked your vialge\nThe elder said that the mostonr is looking for the power gem\nand that he will do everything to find it. You are destend to destroy the mosntor\n")
-    print("Type your name in:")
-    playername = input("")
+#    print("Type your name in:")
+#    playername = input("")
 def monsterattack():
     global lastletter
     global playerhealth
@@ -74,7 +74,7 @@ def monsterBattle(monsterName, dmg):
             ma = False
         attackdmg = random.randint(1,weapondmg)
         shielddmg = random.randint(1,4)
-        print("Hello", playername)
+        print("Hello Adventer")
         print("Your helth is ", playerhealth)
         print(allouttime, "more rounds before cou can use all out attack")
         print(healthposion, "more rounds until you can use the health posion")
